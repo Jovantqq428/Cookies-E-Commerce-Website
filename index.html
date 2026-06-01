@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title> Cookies Bites — Cherry Blossom Edition</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Nunito:wght@300;400;600;700&family=Dancing+Script:wght@600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --pink-deep: #b5446e;
+      --pink-mid: #e8789a;
+      --pink-soft: #f7c5d5;
+      --pink-pale: #fdf0f4;
+      --sakura: #ffb7c5;
+      --petal: #ffe4ec;
+      --white: #fff;
+      --dark: #2c1a22;
+      --text: #4a2535;
+      --gold: #c9a96e;
+      --shadow: rgba(181,68,110,0.13);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: var(--pink-pale);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* ===== TOPBAR MARQUEE ===== */
+    .topbar {
+      background: linear-gradient(90deg, var(--pink-deep), #9b2457, var(--pink-deep));
+      color: #fff;
+      padding: 9px 0;
+      overflow: hidden;
+      white-space: nowrap;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+    .marquee-track {
+      display: inline-block;
+      animation: marquee 28s linear infinite;
+    }
+    .marquee-track span { margin: 0 2.5rem; }
+    .marquee-track .petal-icon { color: var(--sakura); }
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ===== NAVBAR ===== */
+    nav {
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      border-bottom: 1.5px solid var(--pink-soft);
+      box-shadow: 0 2px 18px var(--shadow);
+    }
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+    .logo {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2rem;
+      color: var(--pink-deep);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .logo span { color: var(--gold); }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -3px; left: 0;
+      width: 0; height: 2px;
+      background: var(--pink-deep);
+      transition: width 0.3s;
+    }
+    .nav-links a:hover { color: var(--pink-deep); }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-cta {
+      background: var(--pink-deep);
+      color: #fff !important;
+      padding: 0.45rem 1.3rem;
+      border-radius: 50px;
+      font-weight: 700 !important;
+      transition: background 0.2s, transform 0.2s !important;
+    }
+    .nav-cta:hover { background: #9b2457 !important; transform: scale(1.05); }
+    .nav-cta::after { display: none !important; }
+
+    /* ===== HERO ===== */
+    .hero {
+      min-height: 92vh;
+      background:
+        radial-gradient(ellipse at 80% 10%, #f9d0de 0%, transparent 55%),
+        radial-gradient(ellipse at 10% 90%, #fce4ec 0%, transparent 55%),
+        linear-gradient(145deg, #fff5f8 0%, #fce4ec 60%, #f8bbd0 100%);
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding: 5rem 2rem 3rem;
+    }
+    .hero-petals { position: absolute; inset: 0; pointer-events: none; }
+    .petal {
+      position: absolute;
+      font-size: 1.5rem;
+      opacity: 0.35;
+      animation: fall linear infinite;
+    }
+    @keyframes fall {
+      0% { transform: translateY(-60px) rotate(0deg); opacity: 0.4; }
+      100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+    }
+    .hero-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+    .hero-text h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      line-height: 1.18;
+      color: var(--dark);
+      margin-bottom: 1.2rem;
+    }
+    .hero-text h1 em {
+      font-style: italic;
+      color: var(--pink-deep);
+    }
+    .hero-text p {
+      font-size: 1.1rem;
+      color: #7a4060;
+      line-height: 1.7;
+      margin-bottom: 2rem;
+      max-width: 460px;
+    }
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--pink-deep);
+      color: #fff;
+      padding: 0.85rem 2.2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1rem;
+      box-shadow: 0 6px 24px rgba(181,68,110,0.3);
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .btn-primary:hover { background: #9b2457; transform: translateY(-2px); box-shadow: 0 10px 30px rgba(181,68,110,0.4); }
+    .btn-secondary {
+      border: 2px solid var(--pink-deep);
+      color: var(--pink-deep);
+      padding: 0.83rem 2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1rem;
+      transition: all 0.2s;
+    }
+    .btn-secondary:hover { background: var(--pink-pale); }
+    .hero-visual {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+    }
+    .hero-card {
+      background: #fff;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px var(--shadow);
+      transition: transform 0.3s;
+      cursor: pointer;
+    }
+    .hero-card:hover { transform: translateY(-6px) rotate(-1deg); }
+    .hero-card:nth-child(2) { margin-top: 2rem; }
+    .hero-card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      display: block;
+    }
+    .hero-card-label {
+      padding: 0.7rem 1rem;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--pink-deep);
+    }
+    .badge-new {
+      background: var(--pink-deep);
+      color: #fff;
+      font-size: 0.65rem;
+      font-weight: 800;
+      padding: 2px 8px;
+      border-radius: 50px;
+      letter-spacing: 0.08em;
+      margin-left: 6px;
+      vertical-align: middle;
+    }
+
+    /* ===== SECTIONS ===== */
+    section { padding: 5rem 2rem; }
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+    .section-header { text-align: center; margin-bottom: 3.5rem; }
+    .section-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.9rem, 3.5vw, 2.8rem);
+      color: var(--dark);
+      margin-bottom: 0.6rem;
+    }
+    .section-header h2 em { color: var(--pink-deep); font-style: italic; }
+    .section-header p { color: #7a4060; font-size: 1rem; max-width: 520px; margin: 0 auto; }
+    .divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin: 0.8rem auto 0;
+    }
+    .divider::before, .divider::after {
+      content: '';
+      flex: 1;
+      max-width: 80px;
+      height: 1.5px;
+      background: var(--pink-soft);
+    }
+
+    /* ===== PRODUCTS ===== */
+    #products { background: var(--white); }
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 2rem;
+    }
+    .product-card {
+      background: var(--pink-pale);
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px var(--shadow);
+      transition: all 0.3s;
+      position: relative;
+    }
+    .product-card:hover { transform: translateY(-8px); box-shadow: 0 16px 40px rgba(181,68,110,0.22); }
+    .product-img-wrap {
+      position: relative;
+      height: 220px;
+      overflow: hidden;
+      background: var(--petal);
+    }
+    .product-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s;
+    }
+    .product-card:hover .product-img-wrap img { transform: scale(1.08); }
+    .product-tag {
+      position: absolute;
+      top: 12px; left: 12px;
+      background: var(--pink-deep);
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 800;
+      padding: 3px 12px;
+      border-radius: 50px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .edit-img-btn {
+      position: absolute;
+      bottom: 10px; right: 10px;
+      background: rgba(255,255,255,0.92);
+      border: none;
+      border-radius: 50%;
+      width: 36px; height: 36px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      box-shadow: 0 2px 8px var(--shadow);
+      transition: background 0.2s, transform 0.2s;
+    }
+    .edit-img-btn:hover { background: var(--pink-soft); transform: scale(1.1); }
+    .product-info { padding: 1.2rem 1.3rem 1.4rem; }
+    .product-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 0.3rem;
+    }
+    .product-desc { font-size: 0.83rem; color: #8a5068; margin-bottom: 0.9rem; line-height: 1.5; }
+    .product-footer { display: flex; align-items: center; justify-content: space-between; }
+    .product-price {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--pink-deep);
+    }
+    .add-to-cart {
+      background: var(--pink-deep);
+      color: #fff;
+      border: none;
+      padding: 0.5rem 1.2rem;
+      border-radius: 50px;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .add-to-cart:hover { background: #9b2457; transform: scale(1.05); }
+
+    /* Hidden file input */
+    .img-file-input { display: none; }
+
+    /* ===== TESTIMONIALS ===== */
+    #testimonials { background: linear-gradient(160deg, #fff5f8 0%, #fce4ec 100%); }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+    .testimonial-card {
+      background: #fff;
+      border-radius: 24px;
+      padding: 2rem 1.6rem 1.6rem;
+      box-shadow: 0 4px 24px var(--shadow);
+      position: relative;
+      transition: transform 0.3s;
+    }
+    .testimonial-card:hover { transform: translateY(-5px); }
+    .testimonial-card::before {
+      content: '\201C';
+      font-family: 'Playfair Display', serif;
+      font-size: 5rem;
+      color: var(--pink-soft);
+      position: absolute;
+      top: -8px; left: 18px;
+      line-height: 1;
+    }
+    .t-avatar-wrap {
+      position: relative;
+      width: 72px; height: 72px;
+      margin: 0 auto 1rem;
+    }
+    .t-avatar-wrap img {
+      width: 72px; height: 72px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--pink-soft);
+      display: block;
+    }
+    .t-edit-btn {
+      position: absolute;
+      bottom: -2px; right: -2px;
+      background: var(--pink-deep);
+      border: none;
+      border-radius: 50%;
+      width: 24px; height: 24px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.65rem;
+      color: #fff;
+      box-shadow: 0 2px 6px var(--shadow);
+      transition: transform 0.2s;
+    }
+    .t-edit-btn:hover { transform: scale(1.2); }
+    .t-stars { text-align: center; color: #f0b429; font-size: 0.95rem; margin-bottom: 0.7rem; }
+    .t-text { font-size: 0.93rem; color: #6a3a4c; line-height: 1.65; text-align: center; margin-bottom: 1rem; font-style: italic; }
+    .t-name { text-align: center; font-weight: 700; color: var(--dark); font-size: 0.95rem; }
+    .t-role { text-align: center; font-size: 0.78rem; color: var(--pink-mid); }
+
+    /* ===== CONTACT ===== */
+    #contact { background: var(--white); }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+    .contact-info h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      color: var(--dark);
+      margin-bottom: 1.2rem;
+    }
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 1.3rem;
+    }
+    .contact-icon {
+      width: 44px; height: 44px;
+      background: var(--petal);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+    .contact-item-text strong { display: block; font-weight: 700; color: var(--dark); font-size: 0.9rem; }
+    .contact-item-text span { font-size: 0.88rem; color: #8a5068; }
+    .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .contact-form input,
+    .contact-form textarea {
+      padding: 0.85rem 1.1rem;
+      border: 1.5px solid var(--pink-soft);
+      border-radius: 12px;
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.95rem;
+      color: var(--text);
+      background: var(--pink-pale);
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      width: 100%;
+    }
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      border-color: var(--pink-mid);
+      box-shadow: 0 0 0 3px rgba(232,120,154,0.15);
+    }
+    .contact-form textarea { resize: vertical; min-height: 120px; }
+    .send-btn {
+      background: var(--pink-deep);
+      color: #fff;
+      border: none;
+      padding: 0.9rem 2.2rem;
+      border-radius: 50px;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      align-self: flex-start;
+    }
+    .send-btn:hover { background: #9b2457; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(181,68,110,0.3); }
+
+    /* ===== LOCATIONS MAP ===== */
+    #locations { background: var(--pink-pale); }
+    .locations-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+    .location-card {
+      background: #fff;
+      border-radius: 18px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 18px var(--shadow);
+      transition: transform 0.3s;
+      border-top: 4px solid var(--pink-deep);
+    }
+    .location-card:hover { transform: translateY(-5px); }
+    .location-card h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: var(--dark);
+      margin-bottom: 0.5rem;
+    }
+    .location-card p { font-size: 0.87rem; color: #8a5068; line-height: 1.6; margin-bottom: 0.8rem; }
+    .location-card a {
+      font-size: 0.82rem;
+      color: var(--pink-deep);
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .location-card a:hover { text-decoration: underline; }
+    .loc-icon { font-size: 2rem; margin-bottom: 0.7rem; }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--dark);
+      color: #e0b8c8;
+      padding: 3.5rem 2rem 1.5rem;
+    }
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 2.5rem;
+      margin-bottom: 2.5rem;
+    }
+    .footer-brand .logo { font-size: 1.8rem; margin-bottom: 0.9rem; display: inline-block; }
+    .footer-brand p { font-size: 0.87rem; color: #b08090; line-height: 1.7; max-width: 260px; }
+    .footer-col h5 {
+      color: #fff;
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .footer-links { list-style: none; }
+    .footer-links li { margin-bottom: 0.55rem; }
+    .footer-links a {
+      color: #b08090;
+      text-decoration: none;
+      font-size: 0.88rem;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--sakura); }
+    .footer-socials { display: flex; gap: 0.8rem; margin-top: 1rem; }
+    .social-btn {
+      width: 36px; height: 36px;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #e0b8c8;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: background 0.2s, color 0.2s;
+    }
+    .social-btn:hover { background: var(--pink-deep); color: #fff; }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.07);
+      padding-top: 1.3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .footer-bottom p { font-size: 0.82rem; color: #8a5068; }
+    .footer-bottom span { color: var(--sakura); }
+
+    /* ===== CART TOAST ===== */
+    .toast {
+      position: fixed;
+      bottom: 2rem; right: 2rem;
+      background: var(--dark);
+      color: #fff;
+      padding: 0.8rem 1.5rem;
+      border-radius: 14px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      box-shadow: 0 8px 28px rgba(0,0,0,0.25);
+      transform: translateY(80px);
+      opacity: 0;
+      transition: all 0.35s cubic-bezier(0.4,0,0.2,1);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .toast.show { transform: translateY(0); opacity: 1; }
+
+    /* ===== SCROLL ANIMATIONS ===== */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .fade-in.visible { opacity: 1; transform: none; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      .hero-content { grid-template-columns: 1fr; }
+      .hero-visual { display: none; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+
+    /* Petal floating */
+    .petal-1  { left: 5%;  animation-duration: 9s;  animation-delay: 0s;   font-size: 1.2rem; }
+    .petal-2  { left: 15%; animation-duration: 12s; animation-delay: 1.5s; }
+    .petal-3  { left: 25%; animation-duration: 8s;  animation-delay: 3s;   font-size: 1rem; }
+    .petal-4  { left: 40%; animation-duration: 14s; animation-delay: 0.5s; }
+    .petal-5  { left: 55%; animation-duration: 10s; animation-delay: 2s;   font-size: 1.8rem; }
+    .petal-6  { left: 68%; animation-duration: 11s; animation-delay: 4s;   font-size: 0.9rem; }
+    .petal-7  { left: 80%; animation-duration: 7s;  animation-delay: 1s;   font-size: 1.4rem; }
+    .petal-8  { left: 90%; animation-duration: 13s; animation-delay: 2.5s; }
+    .petal-9  { left: 50%; animation-duration: 9s;  animation-delay: 5s;   font-size: 2rem; }
+    .petal-10 { left: 72%; animation-duration: 16s; animation-delay: 0.8s; font-size: 1.1rem; }
+  </style>
+</head>
+<body>
+
+<!-- ===== TOPBAR MARQUEE ===== -->
+<div class="topbar">
+  <div class="marquee-track" id="marqueeTrack">
+    <span>🌸 Free shipping on orders over $50!</span>
+    <span class="petal-icon">🌸</span>
+    <span>✨ New: Cherry Blossom Drop — Limited Edition</span>
+    <span class="petal-icon">🌸</span>
+    <span>🍪 Handcrafted cookies for YOU 🫰 </span>
+    <span class="petal-icon">🌸</span>
+    <span>💌 Use code SAKURA20 for 20% off your first order</span>
+    <span class="petal-icon">🌸</span>
+    <span>🚀 Fast delivery across Pampanga & nationwide</span>
+    <span class="petal-icon">🌸</span>
+    <span>🌸 Free shipping on orders over $50!</span>
+    <span class="petal-icon">🌸</span>
+    <span>✨ New: Cherry Blossom Drop — Limited Edition</span>
+    <span class="petal-icon">🌸</span>
+    <span>🍪 Handcrafted cookies for YOU 🫰</span>
+    <span class="petal-icon">🌸</span>
+    <span>💌 Use code SAKURA20 for 20% off your first order</span>
+    <span class="petal-icon">🌸</span>
+    <span>🚀 Fast delivery across Pampanga & nationwide</span>
+    <span class="petal-icon">🌸</span>
+  </div>
+</div>
+
+<!-- ===== NAVBAR ===== -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="logo"> Cookies Bite <span>🌸</span></a>
+    <ul class="nav-links">
+      <li><a href="#products">Shop</a></li>
+      <li><a href="#testimonials">Reviews</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#locations">Locations</a></li>
+      <li><a href="#products" class="nav-cta">🛒 Order Now</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="home">
+  <div class="hero-petals">
+    <div class="petal petal-1">🌸</div>
+    <div class="petal petal-2">🌺</div>
+    <div class="petal petal-3">🌸</div>
+    <div class="petal petal-4">🌸</div>
+    <div class="petal petal-5">🌺</div>
+    <div class="petal petal-6">🌸</div>
+    <div class="petal petal-7">🌸</div>
+    <div class="petal petal-8">🌺</div>
+    <div class="petal petal-9">🌸</div>
+    <div class="petal petal-10">🌸</div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-text fade-in">
+      <h1>Cookies <em>crafted</em><br/>for <em>YOU</em> who<br/>love to <em>eat sweets</em></h1>
+      <p></p>
+      <div class="hero-btns">Handcrafted artisan shortbread cookies made for cookie lovers who appreciate quality, flavor, and beautiful design.
+        <a href="#products" class="btn-primary">🌸 Shop Collection</a>
+        <a href="#testimonials" class="btn-secondary">Read Reviews</a>
+      </div>
+    </div>
+    <div class="hero-visual fade-in">
+      <div class="hero-card">
+        <img src="cookie1.jpg" alt="Cookie 1"/>
+        <div class="hero-card-label">Sakura Bloom Butter Cookie <span class="badge-new">NEW</span></div>
+      </div>
+      <div class="hero-card">
+        <img src="cookie2.jpg" alt="Cookie 2"/>
+        <div class="hero-card-label">Cherry Petal Shortbread Delight
+</div>
+      </div>
+      <div class="hero-card">
+        <img src="cookie3.jpg" alt="Cookie 3"/>
+        <div class="hero-card-label">Hanami Sugar Blossom Cookie</div>
+      </div>
+      <div class="hero-card">
+        <img src="cookie4.jpg" alt="Cookie 4"/>
+        <div class="hero-card-label">Sakura Glazed Dream Cookie</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PRODUCTS ===== -->
+<section id="products">
+  <div class="section-inner">
+    <div class="section-header fade-in">
+      <h2>Our <em>Cookie</em> Collection</h2>
+      <div class="divider">🌸</div>
+      <p>Each cookie is lovingly handcrafted, inspired by the delicate beauty of cherry blossoms and timeless artistry..</p>
+    </div>
+    <div class="products-grid" id="productsGrid">
+
+      <!-- Product cards rendered by JS -->
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== TESTIMONIALS ===== -->
+<section id="testimonials">
+  <div class="section-inner">
+    <div class="section-header fade-in">
+      <h2>What <em>My Customer</em> Are Saying</h2>
+      <div class="divider">🌸</div>
+      <p>Real reviews from our community of cookie-loving peoples.</p>
+    </div>
+    <div class="testimonials-grid" id="testimonialsGrid">
+      <!-- Rendered by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-header fade-in">
+      <h2>Get in <em>Touch</em></h2>
+      <div class="divider">🌸</div>
+      <p>Have a custom order or a sweet question? We'd love to hear from you!</p>
+    </div>
+    <div class="contact-grid fade-in">
+      <div class="contact-info">
+        <h3>Let's bake something<br/>beautiful together 🌸</h3>
+        <div class="contact-item">
+          <div class="contact-icon">📧</div>
+          <div class="contact-item-text">
+            <strong>Email Us</strong>
+            <span>jokantqq428@gmail.com</span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📱</div>
+          <div class="contact-item-text">
+            <strong>Call or Text</strong>
+            <span>+09925458872</span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div class="contact-item-text">
+            <strong>Main Studio</strong>
+            <span>Magalang, Pampanga, Philippines</span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🕐</div>
+          <div class="contact-item-text">
+            <strong>Business Hours</strong>
+            <span>Mon–Sat: 9AM – 7PM PHT</span>
+          </div>
+        </div>
+      </div>
+      <form class="contact-form" onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <input type="text" placeholder="Your Name" required />
+          <input type="email" placeholder="Email Address" required />
+        </div>
+        <input type="text" placeholder="Subject" />
+        <textarea placeholder="Your message..."></textarea>
+        <button type="submit" class="send-btn">🌸 Send Message</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ===== LOCATIONS ===== -->
+<section id="locations">
+  <div class="section-inner">
+    <div class="section-header fade-in">
+      <h2>Find Us <em>Near You</em></h2>
+      <div class="divider">🌸</div>
+      <p>Visit one of our cozy studios or pick up your order at a partner location.</p>
+    </div>
+    <div class="locations-grid fade-in">
+      <div class="location-card">
+        <div class="loc-icon">🏠</div>
+        <h4> Cookies Bites Official Shop </h4>
+        <p>12 Sakura St., Brgy. Sta Lucia, Pampanga<br/>Magalang, PH 2011</p>
+        <a href="https://maps.google.com" target="_blank">📍 Get Directions →</a>
+      </div>
+      <div class="location-card">
+        <div class="loc-icon">🏪</div>
+        <h4>Antipolo</h4>
+        <p>Sumulong Highway, Brgy. San Roque<br/>Antipolo City, Rizal 1870</p>
+        <a href="https://maps.google.com" target="_blank">📍 Get Directions →</a>
+      </div>
+      <div class="location-card">
+        <div class="loc-icon">🌸</div>
+        <h4>Makati Café Partner</h4>
+        <p>The Hideout Café, Salcedo Village<br/>Makati City, Metro Manila 1227</p>
+        <a href="https://maps.google.com" target="_blank">📍 Get Directions →</a>
+      </div>
+      <div class="location-card">
+        <div class="loc-icon">🚀</div>
+        <h4>Online Nationwide</h4>
+        <p>Order anywhere in the Philippines!<br/>Fast delivery via Lalamove & LBC.</p>
+        <a href="#products">🍪 Shop Online →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="logo"> Cookies Bites <span style="color:var(--sakura)">🌸</span></a>
+        <p>Artisan-crafted cookies made with love in the Philippines, inspired by the beauty of cherry blossoms.</p>
+        <div class="footer-socials">
+          <a class="social-btn" href="https://www.facebook.com/jovantqq428" title="Facebook">ƒ</a>
+          <a class="social-btn" href="https://www.instagram.com/jovstqq428/" title="Instagram">📷</a>
+          <a class="social-btn" href="https://x.com/jovskieeee" title="X">𝕏</a>
+          <a class="social-btn" href="https://www.tiktok.com/@raijinluckey" title="TikTok">♪</a>
+          <a class="social-btn" href="https://github.com/Jovantqq428" title="GitHub">⎔</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Quick Links</h5>
+        <ul class="footer-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#products">Shop</a></li>
+          <li><a href="#testimonials">Reviews</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+          <li><a href="#locations">Locations</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Collections</h5>
+        <ul class="footer-links">
+          <li><a href="#products">Sakura Sunrise Cookie Set</a></li>
+          <li><a href="#products">Cherry Blossom Glass Cookie</a></li>
+          <li><a href="#products">Sakura Heart Butter Cookie</a></li>
+          <li><a href="#products">Blushing Blossom Macaron Cookie</a></li>
+          <li><a href="#products">Gift Sets</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Policies</h5>
+        <ul class="footer-links">
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Refund Policy</a></li>
+          <li><a href="#">Shipping Info</a></li>
+          <li><a href="#">FAQ</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Cookies Bites. All Rights Reserved. <span>Jovan David</span></p>
+      <p>Made with <span>🌸</span> in the Philippines</p>
+    </div>
+  </div>
+</footer>
+
+<!-- TOAST -->
+<div class="toast" id="toast">🍪 Added to cart!</div>
+
+<!-- ===== JS ===== -->
+<script>
+  // ---- PRODUCT DATA ----
+  const products = [
+    {
+      id: 1,
+      name: "Blushing Blossom Macaron Cookie",
+      desc: "Light almond cookie with cherry blossom cream filling and pastel pink shells.",
+      price: "₱480",
+      tag: "Bestseller",
+      img: "cookie5.jpg"
+    },
+    {
+      id: 2,
+      name: "Pink Sakura Snowflake Cookie",
+      desc: "Crisp sugar cookie dusted with powdered sugar and decorated with floral icing snowflake patterns.",
+      price: "₱520",
+      tag: "New",
+      img: "cookie6.jpg"
+    },
+    {
+      id: 3,
+      name: "Cherry Blossom Tea Cookie",
+      desc: "Light tea-infused cookie with subtle floral notes and sakura icing details.",
+      price: "₱650",
+      tag: "Gift",
+      img: "cookie7.jpg"
+    },
+    {
+      id: 4,
+      name: "Sakura Heart Butter Cookie",
+      desc: "Heart-shaped butter cookie decorated with pink blossoms for a romantic spring feel.",
+      price: "₱390",
+      tag: "Classic",
+      img: "cookie8.jpg"
+    },
+    {
+      id: 5,
+      name: "Spring Petal Sandwich Cookie",
+      desc: "Two soft cookies filled with strawberry cream and topped with cherry blossom designs.",
+      price: "₱560",
+      tag: "Trending",
+      img: "cookie9.jpg"
+    },
+    {
+      id: 6,
+      name: "Sakura Velvet Cookie Bite",
+      desc: "Soft velvet-textured cookie with pink cocoa tones and floral sugar accents.",
+      price: "₱720",
+      tag: "Value",
+      img: "cookie10.jpg"
+    },{
+      id: 6,
+      name: "Cherry Blossom Glass Cookie",
+      desc: "Translucent sugar cookie with edible floral designs that glow like stained glass.",
+      price: "₱720",
+      tag: "Value",
+      img: "cookie11.jpg"
+    },{
+      id: 6,
+      name: "Sakura Sunrise Cookie Set",
+      desc: "Assorted cookies in soft gradient pink-orange tones inspired by a cherry blossom sunrise.",
+      price: "₱720",
+      tag: "Value",
+      img: "cookie12.jpg"
+    },
+  ];
+
+  // ---- TESTIMONIAL DATA ----
+  const testimonials = [
+    {
+      id: 1,
+      name: "Jovan G. David",
+      role: "Full-Stack Developer",
+      text: "Brought these to our sprint review and everyone went crazy. The Sakura Petal Delights literally disappeared in 10 minutes. 10/10 would re-order!",
+      stars: 5,
+      img: "jovan.jpg"
+    },
+    {
+      id: 2,
+      name: "Mariana Del Rey",
+      role: "Teacher na Maganda",
+      text: "The packaging alone is worth it — it's so pretty. The cookies taste even better. Cherry Blossom Kiss Pack is my new productivity fuel.",
+      stars: 5,
+      img: "mariana.jpg"
+    },
+    {
+      id: 3,
+      name: "Lana Del Rey",
+      role: "American Singer-Songwriter",
+      text: "Ordered the Spring Garden Sakura Delights for my team's milestone. They were absolutely divine and so thoughtfully designed. Will definitely order again!",
+      stars: 5,
+      img: "lana.jpg"
+    },
+    {
+      id: 4,
+      name: "Daniel Caesar",
+      role: "Canadian Singer-Songwriter",
+      text: "Finally, a cookie for people who love both aesthetics and code. The Tokyo Bloom Butter Cookies is my go-to gift for dev friends.",
+      stars: 5,
+      img: "danielcaesar.jpg"
+    },
+    {
+      id: 1,
+      name: "Eminem",
+      role: "Rapper",
+      text: "Brought these to our sprint review and everyone went crazy. The Petal Cloud Cookies literally disappeared in 10 minutes. 10/10 would re-order!",
+      stars: 5,
+      img: "eminem.jpg"
+    },{
+      id: 1,
+      name: "Wolfgang Amadeus Mozart",
+      role: "Composer and Musician",
+      text: "Brought these to our sprint review and everyone went crazy. The Enchanted Hanami Treats Cookies literally disappeared in 10 minutes. 10/10 would re-order!",
+      stars: 5,
+      img: "mozart.jpg"
+    }
+  ];
+
+  // ---- RENDER PRODUCTS ----
+  function renderProducts() {
+    const grid = document.getElementById('productsGrid');
+    grid.innerHTML = products.map(p => `
+      <div class="product-card fade-in">
+        <div class="product-img-wrap">
+          <img src="${p.img}" alt="${p.name}" id="prod-img-${p.id}" />
+          <div class="product-tag">${p.tag}</div>
+          <button class="edit-img-btn" title="Change product photo" onclick="triggerImgUpload('prod-img-${p.id}', 'prod-file-${p.id}')">✏️</button>
+          <input type="file" accept="image/*" class="img-file-input" id="prod-file-${p.id}" onchange="previewImg(event,'prod-img-${p.id}')" />
+        </div>
+        <div class="product-info">
+          <div class="product-name">${p.name}</div>
+          <div class="product-desc">${p.desc}</div>
+          <div class="product-footer">
+            <div class="product-price">${p.price}</div>
+            <button class="add-to-cart" onclick="addToCart('${p.name}')">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    `).join('');
+    observeFades();
+  }
+
+  // ---- RENDER TESTIMONIALS ----
+  function renderTestimonials() {
+    const grid = document.getElementById('testimonialsGrid');
+    grid.innerHTML = testimonials.map(t => `
+      <div class="testimonial-card fade-in">
+        <div class="t-avatar-wrap">
+          <img src="${t.img}" alt="${t.name}" id="t-img-${t.id}" />
+          <button class="t-edit-btn" title="Change photo" onclick="triggerImgUpload('t-img-${t.id}','t-file-${t.id}')">✏️</button>
+          <input type="file" accept="image/*" class="img-file-input" id="t-file-${t.id}" onchange="previewImg(event,'t-img-${t.id}')" />
+        </div>
+        <div class="t-stars">${'★'.repeat(t.stars)}</div>
+        <div class="t-text">"${t.text}"</div>
+        <div class="t-name">${t.name}</div>
+        <div class="t-role">${t.role}</div>
+      </div>
+    `).join('');
+    observeFades();
+  }
+
+  // ---- IMAGE EDIT ----
+  function triggerImgUpload(imgId, fileId) {
+    document.getElementById(fileId).click();
+  }
+  function previewImg(event, imgId) {
+    const file = event.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = e => {
+      document.getElementById(imgId).src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+  }
+
+  // ---- CART TOAST ----
+  function addToCart(name) {
+    const toast = document.getElementById('toast');
+    toast.innerHTML = `🍪 <strong>${name}</strong> added to cart!`;
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 2800);
+  }
+
+  // ---- CONTACT SUBMIT ----
+  function handleSubmit(e) {
+    e.preventDefault();
+    const toast = document.getElementById('toast');
+    toast.innerHTML = `🌸 Message sent! We'll reply soon.`;
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 3000);
+    e.target.reset();
+  }
+
+  // ---- SCROLL FADE-IN ----
+  function observeFades() {
+    const els = document.querySelectorAll('.fade-in:not(.observed)');
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    els.forEach(el => { el.classList.add('observed'); obs.observe(el); });
+  }
+
+  // ---- INIT ----
+  renderProducts();
+  renderTestimonials();
+  observeFades();
+
+  // Initial fade-ins already in DOM
+  document.querySelectorAll('.fade-in').forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight) el.classList.add('visible');
+  });
+</script>
+</body>
+</html>
